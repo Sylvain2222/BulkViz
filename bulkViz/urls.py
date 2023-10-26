@@ -24,6 +24,5 @@ import cards.views as views
 urlpatterns = [
     path('', views.index, name="home"),
     path('admin/', admin.site.urls),
-    path('upload/', views.upload_file, name='upload_file'),
 ]
 
