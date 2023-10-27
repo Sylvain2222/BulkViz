@@ -62,8 +62,9 @@ file_url = 'storage/curved_plate.bdf'
 # print(x)
 
 
-cquad4 = get_cards(existing_cards, file_url)
+cquad4 = get_cards(["CQUAD4"], file_url)
 print(cquad4)
-print(cquad4['CQUAD4', 273]['name'])
-print(cquad4['CQUAD4', 273]['id'])
-print(cquad4['CQUAD4', 273]['property'])
+# print(cquad4['CQUAD4', 273]['name'])
+# print(cquad4['CQUAD4', 273]['id'])
+# print(cquad4['CQUAD4', 273]['property'])
+

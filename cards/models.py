@@ -10,6 +10,7 @@ class Card:
         self.name = name
 
 
+
 class Element(Card):
     property = 0
 
@@ -45,6 +46,9 @@ class Property(Card):
 
 class Material(Card):
     young_modulus = 0
+
+
+
 
 # class Card(models.Model):
 #     def __init__(self,name,id,slug):
