@@ -9,6 +9,8 @@ class Card:
     def __init__(self, name):
         self.name = name
 
+    # def toDict(self):
+    #     return {'name': self.name, 'id': self.id, 'count': self.count}
 
 
 class Element(Card):
