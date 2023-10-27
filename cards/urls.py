@@ -6,5 +6,7 @@ from cards import views
 
 # index.html
 urlpatterns = [
-    path('bulk', views.card_view)
+    path('bulk', views.bulk_view),
+    path('card', views.card_view),
+    path('cquad4', views.cquad4_view)
 ]
