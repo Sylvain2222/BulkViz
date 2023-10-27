@@ -3,11 +3,12 @@ from django.db import models
 
 # Create your models here.
 class Card:
+    name: ""
     count = 0
     id = 0
 
-    def __init__(self, name):
-        self.name = name
+    # def __init__(self, name):
+    #     self.name = name
 
     # def toDict(self):
     #     return {'name': self.name, 'id': self.id, 'count': self.count}
@@ -48,9 +49,6 @@ class Property(Card):
 
 class Material(Card):
     young_modulus = 0
-
-
-
 
 # class Card(models.Model):
 #     def __init__(self,name,id,slug):
