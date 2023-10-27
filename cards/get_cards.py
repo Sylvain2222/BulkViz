@@ -58,7 +58,7 @@ def get_cards(existing_cards, file_url):
     i = 0
     dict = {}
 
-    my_file = open(file_url, 'r')  # TBD: URL as argument
+    my_file = open(file_url, 'r')
     my_line = my_file.readline()
 
     while my_line:
@@ -71,7 +71,6 @@ def get_cards(existing_cards, file_url):
                 dict_line["name"] = a[0].strip()
                 dict_line["id"] = a[1].strip()
                 dict_line["property"] = a[2].strip()
-                # dict[card, i] = dict_line
                 if card_type in dict:
                     dict[card_type] += [dict_line]
                 else:

@@ -22,7 +22,7 @@ import cards.views as views
 
 #index.html
 urlpatterns = [
-    path('', views.index, name="home"),
     path('admin/', admin.site.urls),
+    path('', include('bulkviz_app.urls'))
 ]
 

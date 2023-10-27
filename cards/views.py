@@ -1,18 +1,12 @@
 from django.shortcuts import render, redirect
 #from flask import Flask, request
 from cards import models
+from django.http import JsonResponse
 
 # Create your views here.
-# def index(request):
-#     return render(request, 'cards/index.html',context={})
-
 
 def card_view(request):
-    # card = {
-    #     'name': 'CQUAD4',
-    #     'id': 99,
-    #     'count': 789,
-    # }
+
     card = models.Card()
     card.name = "CQUAD4"
     card.id = 12
