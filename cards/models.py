@@ -7,7 +7,7 @@ class Card:
     # id = 0
     count = 0
 
-    def __init__(self, name,id):
+    def __init__(self, name, id):
         self.name = name
         self.id = id
 
@@ -17,11 +17,13 @@ class Card:
 
 class Element(Card):
     # property = ""
-    def __init__(self, name, id,property):
+    def __init__(self, name, id, property, grids, orientation):
         # self.name = name
         # self.id = id
         super().__init__(name, id)
         self.property = property
+        self.grids = grids
+        self.orientation = orientation
 
     # def toDict(self):
     #     return {'name': self.name, 'id': self.id, 'property': self.property}
@@ -36,10 +38,9 @@ class Property(Card):
 
 class Material(Card):
     # young_modulus = 0
-    def __init__(self, name, id, young_modulus):
+    def __init__(self, name, id, E):
         super().__init__(name, id)
-        self.young_modulus = young_modulus
-
+        self.E = E
 
 # class Card(models.Model):
 #     def __init__(self,name,id,slug):

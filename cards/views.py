@@ -11,8 +11,10 @@ def card_view(request):
     cquad4.name = d["CQUAD4"][0]['name']
     cquad4.id = d["CQUAD4"][0]['id']
     cquad4.property = d["CQUAD4"][0]['property']
+    cquad4.grids = d["CQUAD4"][0]['grids']
+    cquad4.orientation = d["CQUAD4"][0]['orientation']
 
-    json_str = json.dumps(cquad4.name + ":" + cquad4.id + "," + cquad4.property, indent=2)
+    json_str = json.dumps(cquad4.name + ":" + cquad4.id + "," + cquad4.property+"," + cquad4.grids+"," + cquad4.mcid, indent=2)
     # return JsonResponse(cquad4.toDict())
     return JsonResponse(json_str, safe=False)
 
