@@ -16,6 +16,7 @@ def get_cards(existing_cards, file_url):
                 dict_line["name"] = a[0].strip()
                 dict_line["id"] = a[1].strip()
                 dict_line["property"] = a[2].strip()
+                switch:
                 if card_type in dict:
                     dict[card_type] += [dict_line]
                 else:
