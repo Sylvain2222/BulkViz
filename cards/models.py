@@ -11,7 +11,7 @@ class Card:
 
 
 class Element(Card):
-    property = ""
+    property = 0
 
     # def func_element(self, name):
     #     # count = 0
@@ -40,11 +40,11 @@ class Element(Card):
 
 
 class Property(Card):
-    material = ""
+    material = 0
 
 
 class Material(Card):
-    young_modulus = ""
+    young_modulus = 0
 
 # class Card(models.Model):
 #     def __init__(self,name,id,slug):
