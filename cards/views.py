@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect
 from django.http import JsonResponse, HttpResponse
-from cards.test_run import *
+from cards.run_app import *
 import json
 
 
