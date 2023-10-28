@@ -8,9 +8,6 @@ class Card:
         self.name = name
         self.id = id
 
-    # def toDict(self):
-    #     return {'name': self.name, 'id': self.id}
-
 
 class Element(Card):
     def __init__(self, name, id, property, grids, orientation):
@@ -21,11 +18,10 @@ class Element(Card):
 
 
 class Property(Card):
-    def __init__(self, name, id, material):
+    def __init__(self, name, id, material,data):
         super().__init__(name, id)
         self.material = material
-
-    data = ''
+        self.data = data
 
 
 class Material(Card):
@@ -33,15 +29,4 @@ class Material(Card):
         super().__init__(name, id)
         self.data = data
 
-
-# class Test(Card):
-#     def __init__(self, name, id, lacarte):
-#         super().__init__(name, id)
-#         # self.lacarte = lacarte
-#
-#     name = lacarte['name']
-#     id = lacarte['id']
-#     property = lacarte['property']
-#     grids = lacarte['grids']
-#     orientation = lacarte['orientation']
 

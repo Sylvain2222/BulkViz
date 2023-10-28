@@ -17,6 +17,9 @@
        var card = fetch("/card").then(response=> { return response.json()}).then(data=> {
            console.log(data);
            console.log(data['CQUAD4'][0])
+           console.log(data['CTRIA3'][0])
+           console.log(data['PBAR'][0])
+           console.log(data['MAT8'][0])
        })
 
        function showAlert(){

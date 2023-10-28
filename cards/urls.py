@@ -9,7 +9,6 @@ from rest_framework.routers import DefaultRouter
 urlpatterns = [
     path('', views.index),
     path('bulk', views.bulk_view),
-    path('card', views.card_view),
-    path('cquad4', views.cquad4_view),
+    path('cards', views.card_view),
 
 ]
