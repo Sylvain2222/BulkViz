@@ -1,3 +1,4 @@
+from cards.models import *
 def get_cards(existing_cards, file_url):
     a = []
     n: int = 8  # card format
@@ -17,10 +18,7 @@ def get_cards(existing_cards, file_url):
                 dict_line["id"] = a[1].strip()
                 match card_type:
                     case "CQUAD4":
-                        dict_line = get_cquad(a, dict_line)
-                        # dict_line["property"] = a[2].strip()
-                        # dict_line["grids"] = a[3].strip() + " " + a[4].strip() + " " + a[5].strip() + " " + a[6].strip()
-                        # dict_line["mcid"] = a[7].strip()
+                        dict_line = get_cquad(a)
                     case "CTRIA3":
                         dict_line = get_ctria(a, dict_line)
                     case "CBEAM":
@@ -48,21 +46,22 @@ def get_cards(existing_cards, file_url):
     return dict
 
 
-def get_cquad(a, d):
-    try:
-        d["property"] = a[2].strip()
-        d["grids"] = a[3].strip() + " " + a[4].strip() + " " + a[5].strip() + " " + a[6].strip()
-        d["orientation"] = a[7].strip()
-    except:
-        pass
-    return d
+def get_cquad(a):
+    # try:
+    #     d['property'] = a[2].strip()
+    #     d['grids'] = a[3].strip() + " " + a[4].strip() + " " + a[5].strip() + " " + a[6].strip()
+    #     d['orientation'] = a[7].strip()
+    # except:
+    #     pass
+    cquad=Element(a[0].strip(),a[1].strip(),a[2].strip(),a[3].strip() + " " + a[4].strip() + " " + a[5].strip() + " " + a[6].strip(),a[7].strip())
+    return cquad
 
 
 def get_ctria(a, d):
     try:
-        d["property"] = a[2].strip()
-        d["grids"] = a[3].strip() + " " + a[4].strip() + " " + a[5].strip()
-        d["orientation"] = a[6].strip()
+        d['property'] = a[2].strip()
+        d['grids'] = a[3].strip() + " " + a[4].strip() + " " + a[5].strip()
+        d['orientation'] = a[6].strip()
     except:
         pass
     return d
@@ -70,9 +69,9 @@ def get_ctria(a, d):
 
 def get_cbeam(a, d):
     try:
-        d["property"] = a[2].strip()
-        d["grids"] = a[3].strip() + " " + a[4].strip()
-        d["orientation"] = a[5].strip() + " " + a[6].strip() + " " + a[7].strip()
+        d['property'] = a[2].strip()
+        d['grids'] = a[3].strip() + " " + a[4].strip()
+        d['orientation'] = a[5].strip() + " " + a[6].strip() + " " + a[7].strip()
     except:
         pass
     return d
@@ -80,9 +79,9 @@ def get_cbeam(a, d):
 
 def get_cbar(a, d):
     try:
-        d["property"] = a[2].strip()
-        d["grids"] = a[3].strip() + " " + a[4].strip()
-        d["orientation"] = a[5].strip() + " " + a[6].strip() + " " + a[7].strip()
+        d['property'] = a[2].strip()
+        d['grids'] = a[3].strip() + " " + a[4].strip()
+        d['orientation'] = a[5].strip() + " " + a[6].strip() + " " + a[7].strip()
     except:
         pass
     return d
@@ -90,12 +89,8 @@ def get_cbar(a, d):
 
 def get_shell(a, d):
     try:
-        d["material"] = a[2].strip()
-        d["th"] = a[3].strip()
-        d["MID2"] = a[4].strip()
-        d["BI"] = a[5].strip()
-        d["MID3"] = a[6].strip()
-        d["SI"] = a[7].strip()
+        d['material'] = a[2].strip()
+        d['data'] = a[3].strip() + " " + a[4].strip() + " " + a[5].strip() + " " + a[6].strip() + " " + a[7].strip()
     except:
         pass
     return d
@@ -103,12 +98,8 @@ def get_shell(a, d):
 
 def get_pbeam(a, d):
     try:
-        d["material"] = a[2].strip()
-        d["area"] = a[3].strip()
-        d["I1"] = a[4].strip()
-        d["I2"] = a[5].strip()
-        d["I2"] = a[6].strip()
-        d["J"] = a[7].strip()
+        d['material'] = a[2].strip()
+        d['data'] = a[3].strip() + " " + a[4].strip() + " " + a[5].strip() + " " + a[6].strip() + " " + a[7].strip()
     except:
         pass
     return d
@@ -116,11 +107,8 @@ def get_pbeam(a, d):
 
 def get_pbar(a, d):
     try:
-        d["material"] = a[2].strip()
-        d["area"] = a[3].strip()
-        d["I1"] = a[4].strip()
-        d["I2"] = a[5].strip()
-        d["J"] = a[6].strip()
+        d['material'] = a[2].strip()
+        d['data'] = a[3].strip() + " " + a[4].strip() + " " + a[5].strip() + " " + a[6].strip()
     except:
         pass
     return d
@@ -128,14 +116,9 @@ def get_pbar(a, d):
 
 def get_pcomp(a, d):
     try:
-        d["material"] = a[2].strip()
-        d["Z0"] = a[3].strip()
-        d["NSM"] = a[4].strip()
-        d["SB"] = a[5].strip()
-        d["FT"] = a[6].strip()
-        d["TREF"] = a[7].strip()
-        d["GE"] = a[8].strip()
-        d["LAM"] = a[9].strip()
+        d['material'] = a[2].strip()
+        d['data'] = a[3].strip() + " " + a[4].strip() + " " + a[5].strip() + " " + a[6].strip() + " " + a[
+            7].strip() + " " + a[8].strip() + " " + a[9].strip()
     except:
         pass
     return d
@@ -143,27 +126,25 @@ def get_pcomp(a, d):
 
 def get_mat1(a, d):
     try:
-        d["E"] = a[2].strip()
-        d["G"] = a[3].strip()
-        d["NU"] = a[4].strip()
-        d["RHO"] = a[5].strip()
-        d["A"] = a[6].strip()
-        d["TREF"] = a[7].strip()
-        d["GE"] = a[8].strip()
+        d['data'] += a[2].strip()
+        d['data'] += a[3].strip()
+        d['data'] += a[4].strip()
+        d['data'] += a[5].strip()
+        d['data'] += a[6].strip()
+        d['data'] += a[7].strip()
+        d['data'] += a[8].strip()
     except:
+        d['data'] = a[2].strip()
+        d['data'] = a[3].strip()
+        d['data'] = a[4].strip()
         pass
     return d
 
 
 def get_mat8(a, d):
     try:
-        d["E1"] = a[2].strip()
-        d["E2"] = a[3].strip()
-        d["NU12"] = a[4].strip()
-        d["G12"] = a[5].strip()
-        d["G1Z"] = a[6].strip()
-        d["G2Z"] = a[7].strip()
-        d["RHO"] = a[8].strip()
+        d['data'] = a[2].strip() + " " + a[3].strip() + " " + a[4].strip() + " " + a[5].strip() + " " + a[
+            6].strip() + " " + a[7].strip() + " " + a[8].strip()
     except:
         pass
     return d

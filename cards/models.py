@@ -3,9 +3,6 @@ from django.db import models
 
 # Create your models here.
 class Card:
-    # name: ""
-    # id = 0
-    count = 0
 
     def __init__(self, name, id):
         self.name = name
@@ -16,48 +13,35 @@ class Card:
 
 
 class Element(Card):
-    # property = ""
     def __init__(self, name, id, property, grids, orientation):
-        # self.name = name
-        # self.id = id
         super().__init__(name, id)
         self.property = property
         self.grids = grids
         self.orientation = orientation
 
-    # def toDict(self):
-    #     return {'name': self.name, 'id': self.id, 'property': self.property}
-
 
 class Property(Card):
-    # material = 0
     def __init__(self, name, id, material):
         super().__init__(name, id)
         self.material = material
 
+    data = ''
+
 
 class Material(Card):
-    # young_modulus = 0
-    def __init__(self, name, id, E):
+    def __init__(self, name, id, data):
         super().__init__(name, id)
-        self.E = E
+        self.data = data
 
-# class Card(models.Model):
-#     def __init__(self,name,id,slug):
-#         self.name = models.CharField(max_length=16)
-#         self.id = models.CharField(max_length=16)
-#         self.slug = models.SlugField()
 
-# class Element(Card):
-#     property = models.CharField(max_length=16)
-#     card = models.ForeignKey(Card, on_delete=models.CASCADE)
-#     # Element.__init__(self,name,id,slug)
+# class Test(Card):
+#     def __init__(self, name, id, lacarte):
+#         super().__init__(name, id)
+#         # self.lacarte = lacarte
 #
-# class Property(Card):
-#     material = models.CharField(max_length=16)
-#     card = models.ForeignKey(Card, on_delete=models.CASCADE)
-#
-# class Material(Card):
-#     young = models.FloatField(max_length=16)
-#     poisson = models.FloatField(max_length=16)
-#     card = models.ForeignKey(Card, on_delete=models.CASCADE)
+#     name = lacarte['name']
+#     id = lacarte['id']
+#     property = lacarte['property']
+#     grids = lacarte['grids']
+#     orientation = lacarte['orientation']
+

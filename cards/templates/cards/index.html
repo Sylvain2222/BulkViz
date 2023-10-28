@@ -10,5 +10,19 @@
     <br> File Uploading <input type = "file" name = "filename" />
     <p> <input type = "submit" value = "Upload Now" /> </p>
     </form>
+    <h2>List of cards:</h2>
+    <div onclick="showAlert()">{{data}}</div>
+
+    <script>
+       var card = fetch("/card").then(response=> { return response.json()}).then(data=> {
+           console.log(data);
+           console.log(data['CQUAD4'][0])
+       })
+
+       function showAlert(){
+           alert("TEST");
+       }
+
+    </script>
 </body>
 </html>
