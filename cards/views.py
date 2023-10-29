@@ -11,21 +11,25 @@ import json
 # from rest_framework import serializers
 
 
-# Create your views here.
+# View of index page
 def index(request):
-    return render(request, 'cards/index.html', context={"data": dict_bulk})
+    return render(request, 'cards/index.html', context={"bulk": dict_bulk})
 
 
+# view of all cards
 def bulk_view(request):
-    # bulk_json = dict_bulk
-    # return JsonResponse(bulk_json)
+    # json.dumps() convert objects into a json string
     return HttpResponse(json.dumps(dict_bulk, cls=ComplexEncoder), content_type="application/json")
 
 
-def card_view(request):
+# View of the first card of each type of card
+def top_cards_view(request):
+    # json.dumps() convert objects into a json string
     return HttpResponse(json.dumps(first_cards, cls=ComplexEncoder), content_type="application/json")
 
 
+# Encoder to convert object to JSON
+# from https://docs.python.org/fr/3/library/json.html
 class ComplexEncoder(json.JSONEncoder):
     def default(self, obj):
         if isinstance(obj, (Element, Property, Material)):

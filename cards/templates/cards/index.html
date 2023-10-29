@@ -11,21 +11,30 @@
     <p> <input type = "submit" value = "Upload Now" /> </p>
     </form>
     <h2>List of cards:</h2>
-    <div onclick="showAlert()">{{data}}</div>
+<!--    <div onclick="showAlert()">{{ "a" }}</div>-->
+    <div onclick="showAlert()">{{ "1" }}</div>
+    <div onclick="showAlert()">{{ "2" }}</div>
+    <div onclick="showAlert()">{{ choices }}</div>
 
     <script>
-       var card = fetch("/card").then(response=> { return response.json()}).then(data=> {
-           console.log(data);
-           console.log(data['CQUAD4'][0])
-           console.log(data['CTRIA3'][0])
-           console.log(data['PBAR'][0])
-           console.log(data['MAT8'][0])
+       var card = fetch("/bulk").then(response=> { return response.json()}).then(bulk=> {
+           console.log(bulk['CQUAD4'][0]['name'])
+           console.log(bulk['CTRIA3'][0])
+           console.log(bulk['PBAR'][0])
+           console.log(bulk['MAT8'][0])
        })
 
+       var test = "test"
        function showAlert(){
-           alert("TEST");
+           alert(test);
        }
-
+       choices = {'key1':'val1', 'key2':'val2'}
     </script>
+
+<ul>
+    {% for key, value in choices.items %}
+    <li>{{key}} - {{value}}</li>
+    {% endfor %}
+</ul>
 </body>
 </html>

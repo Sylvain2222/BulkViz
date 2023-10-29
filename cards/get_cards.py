@@ -1,20 +1,25 @@
 from cards.models import *
 
 
+# Function to collect all wanted cards from the bulk in a dictionary
 def get_cards(existing_cards, file_url):
-    a = []
-    n: int = 8  # card format
-    dict = {}
+    a = []  # array for line split
+    n: int = 8  # nastran card format
+    dict = {}  # dictionary for the bulk
 
-    my_file = open(file_url, 'r')
+    my_file = open(file_url, 'r')  # bulk file to read
     my_line = my_file.readline()
 
+    # Loop to read all lines of the bulk
     while my_line:
         my_line = my_file.readline()
         for card_type in existing_cards:
-            dict_line = {}
+            dict_line = {}  # Dictionary containing the cards as objects
             if my_line.startswith(card_type):
+                # split the line for each cell of the card
+                # To improve for multi lines cards with endwith('+')
                 a = ([(my_line[x:x + n]) for x in range(0, len(my_line), n)])
+                # attribute all values in objects
                 dict_line["name"] = a[0].strip()
                 dict_line["id"] = a[1].strip()
                 match card_type:
@@ -38,6 +43,7 @@ def get_cards(existing_cards, file_url):
                         dict_line = get_mat1(a)
                     case "MAT8":
                         dict_line = get_mat8(a)
+                # adding card objects in the dictionary
                 if card_type in dict:
                     dict[card_type] += [dict_line]
                 else:
@@ -47,70 +53,83 @@ def get_cards(existing_cards, file_url):
     return dict
 
 
+# Functions for different types of cards - return card object
+
 def get_cquad(a):
     cquad = Element(a[0].strip(), a[1].strip(), a[2].strip(),
-                    a[3].strip() + " " + a[4].strip() + " " + a[5].strip() + " " + a[6].strip(), a[7].strip())
+                    a[3].strip() + " " + a[4].strip() + " " +
+                    a[5].strip() + " " + a[6].strip(), a[7].strip())
     return cquad
 
 
 def get_ctria(a):
     ctria = Element(a[0].strip(), a[1].strip(), a[2].strip(),
-                    a[3].strip() + " " + a[4].strip() + " " + a[5].strip(), a[6].strip())
+                    a[3].strip() + " " + a[4].strip() + " " +
+                    a[5].strip(), a[6].strip())
     return ctria
 
 
 def get_cbeam(a):
     cbeam = Element(a[0].strip(), a[1].strip(), a[2].strip(),
-                    a[3].strip() + " " + a[4].strip(), a[5].strip() + " " + a[6].strip() + " " + a[7].strip())
+                    a[3].strip() + " " + a[4].strip(), a[5].strip() + " " +
+                    a[6].strip() + " " + a[7].strip())
     return cbeam
 
 
 def get_cbar(a):
     cbar = Element(a[0].strip(), a[1].strip(), a[2].strip(),
-                   a[3].strip() + " " + a[4].strip(), a[5].strip() + " " + a[6].strip() + " " + a[7].strip())
+                   a[3].strip() + " " + a[4].strip(),
+                   a[5].strip() + " " + a[6].strip() + " " + a[7].strip())
     return cbar
 
 
 def get_pshell(a):
     pshell = Property(a[0].strip(), a[1].strip(), a[2].strip(),
-                      a[3].strip() + " " + a[4].strip() + " " + a[5].strip() + " " + a[6].strip() + " " + a[7].strip())
+                      a[3].strip() + " " + a[4].strip() + " " +
+                      a[5].strip() + " " + a[6].strip() + " " + a[7].strip())
     return pshell
 
 
 def get_pbeam(a):
     pbeam = Property(a[0].strip(), a[1].strip(), a[2].strip(),
-                     a[3].strip() + " " + a[4].strip() + " " + a[5].strip() + " " + a[6].strip() + " " + a[7].strip())
+                     a[3].strip() + " " + a[4].strip() + " " +
+                     a[5].strip() + " " + a[6].strip() + " " + a[7].strip())
     return pbeam
 
 
 def get_pbar(a):
     pbar = Property(a[0].strip(), a[1].strip(), a[2].strip(),
-                    a[3].strip() + " " + a[4].strip() + " " + a[5].strip() + " " + a[6].strip())
+                    a[3].strip() + " " + a[4].strip() + " " +
+                    a[5].strip() + " " + a[6].strip())
     return pbar
 
 
 def get_pcomp(a):
     pcomp = Property(
-        a[0].strip(), a[1].strip(), a[2].strip(),
-        a[3].strip() + " " + a[4].strip() + " " + a[5].strip() + " " + a[6].strip() + " " + a[7].strip() + " " + a[
-            8].strip() + " " + a[9].strip())
+        a[0].strip(), a[1].strip(), a[2].strip(), a[3].strip() + " " +
+        a[4].strip() + " " + a[5].strip() + " " +
+        a[6].strip() + " " + a[7].strip() + " " +
+        a[8].strip() + " " + a[9].strip())
     return pcomp
 
 
 def get_mat1(a):
     try:
         mat1 = Material(
-            a[0].strip(), a[1].strip(), a[2].strip() + " " + a[3].strip() + " " + a[4].strip() + " " + a[
-                5].strip() + " " + a[6].strip() + " " + a[7].strip() + " " + a[8].strip())
+            a[0].strip(), a[1].strip(), a[2].strip() + " " +
+            a[3].strip() + " " + a[4].strip() + " " + a[5].strip() + " " +
+            a[6].strip() + " " + a[7].strip() + " " + a[8].strip())
     except:
         mat1 = Material(
-            a[0].strip(), a[1].strip(), a[2].strip() + " " + a[3].strip() + " " + a[4].strip())
+            a[0].strip(), a[1].strip(), a[2].strip() + " " +
+            a[3].strip() + " " + a[4].strip())
         pass
     return mat1
 
 
 def get_mat8(a):
     mat8 = Material(
-        a[0].strip(), a[1].strip(), a[2].strip() + " " + a[3].strip() + " " + a[4].strip() + " " + a[
-            5].strip() + " " + a[6].strip() + " " + a[7].strip() + " " + a[8].strip())
+        a[0].strip(), a[1].strip(), a[2].strip() + " " + a[3].strip() + " " +
+        a[4].strip() + " " + a[5].strip() + " " +
+        a[6].strip() + " " + a[7].strip() + " " + a[8].strip())
     return mat8

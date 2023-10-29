@@ -1,7 +1,6 @@
 from django.urls import path, include
 from cards import views
-from rest_framework.routers import DefaultRouter
-
+# from rest_framework.routers import DefaultRouter
 # import cards.views as views
 
 
@@ -9,6 +8,6 @@ from rest_framework.routers import DefaultRouter
 urlpatterns = [
     path('', views.index),
     path('bulk', views.bulk_view),
-    path('cards', views.card_view),
+    path('cards', views.top_cards_view),
 
 ]
