@@ -1,10 +1,11 @@
-from cards.get_cards import *
+# from cards.get_cards import *  # for run in python console
+from get_cards import * # for test
 
 # Input of wanted cards
 existing_cards = ['CQUAD4', 'CTRIA3', 'CBEAM', 'CBAR', 'PSHELL', 'PBEAM', 'PBAR', 'PCOMP', 'MAT1', 'MAT8']
 # Input URL file location
-file_url = 'cards/storage/curved_plate.bdf'  # for server
-# file_url = 'storage/curved_plate.bdf'  # for IDE run
+# file_url = 'cards/storage/curved_plate.bdf'  # for server
+file_url = 'storage/curved_plate.bdf'  # for IDE run
 
 # Create dictionary containing the bulk
 dict_bulk = (get_cards(existing_cards, file_url))

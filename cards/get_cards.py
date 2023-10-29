@@ -1,4 +1,5 @@
-from cards.models import *
+# from cards.models import * # for run in python console
+from models import * # for test
 
 
 # Function to collect all wanted cards from the bulk in a dictionary
@@ -107,9 +108,9 @@ def get_pbar(a):
 def get_pcomp(a):
     pcomp = Property(
         a[0].strip(), a[1].strip(), a[2].strip(), a[3].strip() + " " +
-        a[4].strip() + " " + a[5].strip() + " " +
-        a[6].strip() + " " + a[7].strip() + " " +
-        a[8].strip() + " " + a[9].strip())
+                                                  a[4].strip() + " " + a[5].strip() + " " +
+                                                  a[6].strip() + " " + a[7].strip() + " " +
+                                                  a[8].strip() + " " + a[9].strip())
     return pcomp
 
 
@@ -117,12 +118,12 @@ def get_mat1(a):
     try:
         mat1 = Material(
             a[0].strip(), a[1].strip(), a[2].strip() + " " +
-            a[3].strip() + " " + a[4].strip() + " " + a[5].strip() + " " +
-            a[6].strip() + " " + a[7].strip() + " " + a[8].strip())
+                                        a[3].strip() + " " + a[4].strip() + " " + a[5].strip() + " " +
+                                        a[6].strip() + " " + a[7].strip() + " " + a[8].strip())
     except:
         mat1 = Material(
             a[0].strip(), a[1].strip(), a[2].strip() + " " +
-            a[3].strip() + " " + a[4].strip())
+                                        a[3].strip() + " " + a[4].strip())
         pass
     return mat1
 
@@ -130,6 +131,6 @@ def get_mat1(a):
 def get_mat8(a):
     mat8 = Material(
         a[0].strip(), a[1].strip(), a[2].strip() + " " + a[3].strip() + " " +
-        a[4].strip() + " " + a[5].strip() + " " +
-        a[6].strip() + " " + a[7].strip() + " " + a[8].strip())
+                                    a[4].strip() + " " + a[5].strip() + " " +
+                                    a[6].strip() + " " + a[7].strip() + " " + a[8].strip())
     return mat8
