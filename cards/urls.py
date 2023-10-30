@@ -1,6 +1,6 @@
 from django.urls import path,include
 from cards import views
-from rest_framework.schemas import get_schema_view
+# from rest_framework.schemas import get_schema_view
 # from rest_framework.routers import DefaultRouter
 # import cards.views as views
 from drf_spectacular.views import SpectacularAPIView, SpectacularSwaggerView

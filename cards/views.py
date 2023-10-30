@@ -4,14 +4,11 @@ from cards.run_app import *
 import json
 
 
-
 # from cards.serializers import CardSerializer
 # from rest_framework.response import Response
 # from rest_framework.decorators import api_view
 # from rest_framework import viewsets
 # from rest_framework import serializers
-
-
 
 
 # View of index page

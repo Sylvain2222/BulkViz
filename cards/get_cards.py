@@ -1,4 +1,6 @@
-from cards.models import * # for run in python console
+from cards.models import *  # for run in python console
+
+
 # from models import * # for test
 
 
@@ -85,52 +87,58 @@ def get_cbar(a):
 
 
 def get_pshell(a):
-    pshell = Property(a[0].strip(), a[1].strip(), a[2].strip(),
-                      a[3].strip() + " " + a[4].strip() + " " +
-                      a[5].strip() + " " + a[6].strip() + " " + a[7].strip())
+    data = ""
+    pshell = Property(a[0].strip(), a[1].strip(), a[2].strip(), data)
+    for x in range(3, len(a)):
+        data += a[x].strip() + " "
+        x += 1
+    pshell.data = data
     return pshell
 
 
 def get_pbeam(a):
-    pbeam = Property(a[0].strip(), a[1].strip(), a[2].strip(),
-                     a[3].strip() + " " + a[4].strip() + " " +
-                     a[5].strip() + " " + a[6].strip() + " " + a[7].strip())
+    data = ""
+    pbeam = Property(a[0].strip(), a[1].strip(), a[2].strip(), data)
+    for x in range(3, len(a)):
+        data += a[x].strip() + " "
+        x += 1
+    pbeam.data = data
     return pbeam
 
 
 def get_pbar(a):
-    pbar = Property(a[0].strip(), a[1].strip(), a[2].strip(),
-                    a[3].strip() + " " + a[4].strip() + " " +
-                    a[5].strip() + " " + a[6].strip())
+    data = ""
+    pbar = Property(a[0].strip(), a[1].strip(), a[2].strip(), data)
+    for x in range(3, len(a)):
+        data += a[x].strip() + " "
+        x += 1
+    pbar.data = data
     return pbar
 
 
 def get_pcomp(a):
-    pcomp = Property(
-        a[0].strip(), a[1].strip(), a[2].strip(), a[3].strip() + " " +
-                                                  a[4].strip() + " " + a[5].strip() + " " +
-                                                  a[6].strip() + " " + a[7].strip() + " " +
-                                                  a[8].strip() + " " + a[9].strip())
+    data = ""
+    pcomp = Property(a[0].strip(), a[1].strip(), a[2].strip(), data)
+    for x in range(3, len(a)):
+        data += a[x].strip() + " "
+        x += 1
+    pcomp.data = data
     return pcomp
 
 
 def get_mat1(a):
-    try:
-        mat1 = Material(
-            a[0].strip(), a[1].strip(), a[2].strip() + " " +
-                                        a[3].strip() + " " + a[4].strip() + " " + a[5].strip() + " " +
-                                        a[6].strip() + " " + a[7].strip() + " " + a[8].strip())
-    except:
-        mat1 = Material(
-            a[0].strip(), a[1].strip(), a[2].strip() + " " +
-                                        a[3].strip() + " " + a[4].strip())
-        pass
+    data = ""
+    mat1 = Material(a[0].strip(), a[1].strip(), data)
+    for x in range(2, len(a)):
+        data += a[x].strip() + " "
+    mat1.data = data
     return mat1
 
 
 def get_mat8(a):
-    mat8 = Material(
-        a[0].strip(), a[1].strip(), a[2].strip() + " " + a[3].strip() + " " +
-                                    a[4].strip() + " " + a[5].strip() + " " +
-                                    a[6].strip() + " " + a[7].strip() + " " + a[8].strip())
+    data = ""
+    mat8 = Material(a[0].strip(), a[1].strip(), data)
+    for x in range(2, len(a)):
+        data += a[x].strip() + " "
+    mat8.data = data
     return mat8
