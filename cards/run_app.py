@@ -12,7 +12,7 @@ file_url = 'cards/storage/curved_plate.bdf'  # for server
 dict_bulk = (get_cards(existing_cards, file_url))
 
 # Create dictionary containing first cards of each type as objects
-first_cards = {}
+# first_cards = {}
 # for card in existing_cards:
 #     try:
 #         first_cards[card] = dict_bulk[card][0]

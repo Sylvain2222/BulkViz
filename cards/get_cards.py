@@ -7,8 +7,8 @@ from cards.models import *  # for run in python console
 # Function to collect all wanted cards from the bulk in a dictionary
 def get_cards(existing_cards, file_url):
     a = []  # array for line split
-    n: int = 8  # nastran card format
     dict = {}  # dictionary for the bulk
+    n: int = 8  # nastran card format
 
     my_file = open(file_url, 'r')  # bulk file to read
     my_line = my_file.readline()

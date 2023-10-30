@@ -1,11 +1,11 @@
 # from django.test import TestCase
 from unittest import TestCase, main
-# from cards.run_app import *  # for run in python console
-# from cards.get_cards import *# for run in python console
-from run_app import *  # for test
-from get_cards import * # for test
+from cards.run_app import *  # for run in python console
+from cards.get_cards import *# for run in python console
+# from run_app import *  # for test
+# from get_cards import *  # for test
 
-
+# coverage run -m unittest
 
 # Create your tests here.
 
@@ -24,8 +24,14 @@ class testInputCardIsString(TestCase):
 
 class testInputURLIsNotEmpty(TestCase):
     # Test ir file_url is not empty
-    def test_file_url_is_not_empty(self):
+    def test_input_url_is_not_empty(self):
         self.assertNotEqual(file_url, "")
+
+
+class testFileIsBdf(TestCase):
+    # Test ir file_url is not empty
+    def test_file_is_bdf(self):
+        self.assertTrue(file_url.endswith('.bdf'))
 
 
 # Test get_cards() return

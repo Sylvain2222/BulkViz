@@ -36,3 +36,4 @@ class ComplexEncoder(json.JSONEncoder):
             return obj.__dict__
         # Let the base class default method raise the TypeError
         return json.JSONEncoder.default(self, obj)
+
