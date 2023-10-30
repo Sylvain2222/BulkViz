@@ -1,5 +1,5 @@
-# from cards.models import * # for run in python console
-from models import * # for test
+from cards.models import * # for run in python console
+# from models import * # for test
 
 
 # Function to collect all wanted cards from the bulk in a dictionary

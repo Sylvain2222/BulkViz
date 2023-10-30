@@ -1,40 +1,53 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>BulkViz</title>
-</head>
-<body>
-    <h1>BulkViz</h1>
-    <form enctype = "multipart/form-data" action = "upload_script.py" method = "post">
-    <br> File Uploading <input type = "file" name = "filename" />
-    <p> <input type = "submit" value = "Upload Now" /> </p>
-    </form>
-    <h2>List of cards:</h2>
-<!--    <div onclick="showAlert()">{{ "a" }}</div>-->
-    <div onclick="showAlert()">{{ "1" }}</div>
-    <div onclick="showAlert()">{{ "2" }}</div>
-    <div onclick="showAlert()">{{ choices }}</div>
+<!--<!DOCTYPE html>-->
+<!--<html lang="en">-->
+<!--<head>-->
+<!--    <meta charset="UTF-8">-->
+<!--    <title>BulkViz</title>-->
+<!--    <link rel="stylesheet" href="style.css">-->
+<!--</head>-->
+<!--<body>-->
+<!--    <h1>Work in progress</h1>-->
+<!--    <form enctype = "multipart/form-data" action = "upload_script.py" method = "post">-->
+<!--    <br> File Uploading <input type = "file" name = "filename" />-->
+<!--    <p> <input type = "submit" value = "Upload Now" /> </p>-->
+<!--    </form>-->
+<!--    <script src="./templates/cards/script.js"></script>-->
+<!--    <h2>List of cards:</h2>-->
+<!--&lt;!&ndash;    <div onclick="showAlert()">{{ "a" }}</div>&ndash;&gt;-->
+<!--    <div onclick="showAlert()">{{ "1" }}</div>-->
+<!--    <script>-->
+<!--        //var my_dict = JSON.parse("'{{ bulk|escapejs }}'");-->
+<!--        //var context = JSON.parse({{ context }});-->
+<!--        var dict = '{{bulk|escapejs}}';-->
+<!--        console.log(dict);-->
+<!--    </script>-->
+<!--&lt;!&ndash;    <div onclick="showAlert()">{{ bulk }}</div>&ndash;&gt;-->
+<!--<table>-->
+<!--    {% for key, value in bulk.items %}-->
+<!--    <tr onclick="showAlert('{{value.0}}')">-->
+<!--        <td>-->
+<!--            {{key}}-->
+<!--        </td>-->
+<!--        <td>-->
+<!--            {{value|length}}-->
+<!--            {{value.0.id}}-->
+<!--        </td>-->
+<!--    </tr>-->
+<!--    {% endfor %}-->
 
-    <script>
-       var card = fetch("/bulk").then(response=> { return response.json()}).then(bulk=> {
-           console.log(bulk['CQUAD4'][0]['name'])
-           console.log(bulk['CTRIA3'][0])
-           console.log(bulk['PBAR'][0])
-           console.log(bulk['MAT8'][0])
-       })
+<!--&lt;!&ndash;    <li> &ndash;&gt;-->
+<!--&lt;!&ndash;        {% for value2 in value %}&ndash;&gt;-->
+<!--&lt;!&ndash;            {{value2.id}}&ndash;&gt;-->
+<!--&lt;!&ndash;            {% endfor %}&ndash;&gt;-->
 
-       var test = "test"
-       function showAlert(){
-           alert(test);
-       }
-       choices = {'key1':'val1', 'key2':'val2'}
-    </script>
 
-<ul>
-    {% for key, value in choices.items %}
-    <li>{{key}} - {{value}}</li>
-    {% endfor %}
-</ul>
-</body>
-</html>
+<!--&lt;!&ndash;    </li>&ndash;&gt;-->
+<!--<script>-->
+<!--    function showAlert(value){-->
+<!--        console.log('{{value.0}}');-->
+<!--        //alert(value);-->
+<!--    }-->
+<!--</script>-->
+<!--</table>-->
+<!--</body>-->
+<!--</html>-->

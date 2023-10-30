@@ -4,11 +4,14 @@ from cards.run_app import *
 import json
 
 
+
 # from cards.serializers import CardSerializer
 # from rest_framework.response import Response
 # from rest_framework.decorators import api_view
 # from rest_framework import viewsets
 # from rest_framework import serializers
+
+
 
 
 # View of index page
@@ -24,7 +27,7 @@ def bulk_view(request):
 
 # View of the first card of each type of card
 def top_cards_view(request):
-    # json.dumps() convert objects into a json string
+    # json.dumps() convert dict into a json string
     return HttpResponse(json.dumps(first_cards, cls=ComplexEncoder), content_type="application/json")
 
 
